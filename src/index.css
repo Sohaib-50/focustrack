@@ -1,0 +1,319 @@
+:root {
+  --bg: #0c0c0d;
+  --text: #eceae4;
+  --muted: #8a8a8e;
+  --line: rgba(255, 255, 255, 0.08);
+  --gold: #c4a574;
+  --teal: #88a39c;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Outfit, system-ui, sans-serif;
+}
+
+button,
+input {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.app {
+  width: min(440px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 36px 0 80px;
+}
+
+.top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.logo,
+.goal-copy {
+  margin: 0;
+}
+
+.logo {
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.goal-copy {
+  color: var(--muted);
+  font-size: 13px;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+}
+
+.goal-track {
+  height: 2px;
+  margin: 14px 0 40px;
+  background: var(--line);
+}
+
+.goal-fill {
+  height: 100%;
+  background: var(--gold);
+}
+
+.timer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modes {
+  display: flex;
+  gap: 22px;
+}
+
+.modes button,
+.quiet-actions button,
+.remove {
+  background: none;
+  border: 0;
+  padding: 0;
+  color: var(--muted);
+}
+
+.modes button.on {
+  color: var(--text);
+}
+
+.ring {
+  position: relative;
+  margin: 28px 0 18px;
+}
+
+.ring svg {
+  display: block;
+  transform: rotate(-90deg);
+}
+
+.ring-track,
+.ring-progress {
+  fill: none;
+}
+
+.ring-track {
+  stroke: var(--line);
+}
+
+.ring-progress {
+  stroke: var(--gold);
+  stroke-linecap: round;
+}
+
+.ring[data-break='true'] .ring-progress {
+  stroke: var(--teal);
+}
+
+.clock {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 52px;
+  letter-spacing: -0.04em;
+}
+
+.now {
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.primary {
+  min-width: 132px;
+  margin-top: 8px;
+  padding: 12px 28px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--text);
+  color: #111;
+}
+
+.quiet-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 14px;
+  font-size: 13px;
+}
+
+.prefs {
+  display: flex;
+  gap: 22px;
+  margin-top: 36px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.stepper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stepper button {
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--muted);
+}
+
+.stepper em {
+  font-style: normal;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  color: var(--text);
+  min-width: 1.6em;
+  text-align: center;
+}
+
+.pulse {
+  display: flex;
+  align-items: end;
+  gap: 28px;
+  margin: 44px 0 36px;
+  padding: 18px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.pulse span {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.pulse strong {
+  display: block;
+  margin-top: 4px;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.bars {
+  display: flex;
+  align-items: end;
+  gap: 5px;
+  height: 28px;
+  margin-left: auto;
+}
+
+.bars i {
+  display: block;
+  width: 6px;
+  border-radius: 99px;
+  background: var(--gold);
+  opacity: 0.85;
+}
+
+.sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.tasks form {
+  position: relative;
+}
+
+.tasks form input {
+  width: 100%;
+  padding: 10px 0;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  outline: none;
+}
+
+.tasks ul {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+}
+
+.tasks li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+}
+
+.tasks li.active .name {
+  color: var(--gold);
+}
+
+.check {
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: transparent;
+  flex: none;
+}
+
+.check.on {
+  background: var(--gold);
+  border-color: var(--gold);
+}
+
+.name {
+  flex: 1;
+  background: none;
+  border: 0;
+  padding: 0;
+  text-align: left;
+}
+
+.name .done {
+  color: var(--muted);
+  text-decoration: line-through;
+}
+
+.remove {
+  opacity: 0;
+  width: 24px;
+}
+
+.tasks li:hover .remove {
+  opacity: 1;
+}
+
+@media (max-width: 480px) {
+  .clock {
+    font-size: 44px;
+  }
+
+  .prefs {
+    gap: 12px;
+  }
+}
